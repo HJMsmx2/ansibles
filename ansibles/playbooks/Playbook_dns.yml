@@ -1,0 +1,60 @@
+- name: Configuracion bind
+  hosts: Server
+  user: root 
+  tasks:
+    - name: Instalar BIND9
+      apt:
+        name: bind9
+        state: present
+    - name: Instalar herramientas adicionales de BIND9
+      apt:
+        name:
+          - bind9utils
+          - dnsutils
+        state: present
+    - name: Crear el directorio en /etc/bind
+      file:
+        path: /etc/bind/dns 
+        state: directory  
+        owner: root  
+        group: root  
+        mode: '0755'  
+    - name: Copiar archivo de configuración named.conf.options 
+      copy:
+        src:  /home/usuario/ansibles/docs/namedcon
+        dest: /etc/bind/named.conf.options 
+        owner: root
+        group: root
+        mode: '0644'
+    - name: Copiar archivo de db.local
+      copy:
+        src: /home/usuario/ansibles/docs/localdb  
+        dest: /etc/bind/dns/db.hjm.local  
+        owner: root
+        group: root
+        mode: '0644'
+    - name: Configuracion db.ip 
+      copy: 
+        src: /home/usuario/ansibles/docs/dbip
+        dest: /etc/bind/dns/db.1.168.192 
+        owner: root
+        group: root
+        mode: '0644'
+    - name: Configuración de opciones de inicio de BIND
+      copy: 
+        src: /home/usuario/ansibles/docs/confnamed 
+        dest: /etc/default/bind9 
+        owner: root
+        group: root
+        mode: '0644'
+    - name: Configuracion zonas  
+      copy: 
+        src: /home/usuario/ansibles/docs/namedlocal
+        dest: /etc/bind/named.conf.local 
+        owner: root
+        group: root
+        mode: '0644'
+    - name: Reiniciar servicio bind9
+      service:
+        name: bind9
+        state: restarted

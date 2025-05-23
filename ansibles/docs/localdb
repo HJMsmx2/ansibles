@@ -1,0 +1,19 @@
+$TTL 604800
+@   IN  SOA primary.hjm.local. root.primary.hjm.local. (
+        2025052301 ; Serial actualizado
+        3600       ; Refresh
+        1800       ; Retry
+        1209600    ; Expire
+        86400 )    ; Negative Cache TTL
+
+; Servidor DNS
+@       IN  NS      primary.hjm.local.
+
+; Registros A
+primary IN  A       192.168.1.2  
+server  IN  A       192.168.1.2   
+
+; Alias y otros servicios
+www     IN  CNAME   primary
+pop3    IN  CNAME   server
+smtp    IN  CNAME   server

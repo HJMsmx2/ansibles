@@ -1,0 +1,15 @@
+$TTL 604800
+@ IN SOA hjm.local. root.hjm.local. (
+        2025052301 ; Serial actualizado
+        3600       ; Refresh
+        1800       ; Retry
+        604800     ; Expire
+        86400 )    ; Minimum TTL
+
+; Servidor DNS
+@       IN  NS    primary.hjm.local.
+primary IN  A     192.168.1.2
+server  IN  A     192.168.1.2
+
+; Resolución inversa
+2       IN  PTR   primary.hjm.local.

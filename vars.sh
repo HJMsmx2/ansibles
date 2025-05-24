@@ -16,7 +16,6 @@ PLAYBOOK=(
     "Playbook_instalaciones.yml"
     "Playbook_KEA.yml"
     "Playbook_squid.yml"
-    "Playbook_dns.yml"
     "Playbooks_cliente.yml"
 
 )

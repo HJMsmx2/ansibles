@@ -1,8 +1,5 @@
 #!/bin/bash
 # Script de configuración desde la máquina local hacia la máquina Server
-
-## Aqui va descargar repositorio y descomprimir 
-
 # Cargar variables
 source ./vars.sh
 start=$(date +%s)
